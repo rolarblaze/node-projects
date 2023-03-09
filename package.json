@@ -1,0 +1,22 @@
+{
+  "name": "node_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node -L index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "grunt": "^1.6.1",
+    "gulp": "^4.0.2",
+    "react": "^18.2.0",
+    "webpack": "^5.75.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
