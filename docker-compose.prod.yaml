@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  node-project:
+    build: 
+      context: .   #the . is the path to the Dockerfile which is similar to build: . command
+      args:
+        NODE_ENV: production
+    environment:
+      - ENV_NODE=production
+    command: node index.js 
+    
