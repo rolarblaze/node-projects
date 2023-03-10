@@ -6,3 +6,9 @@ services:
       - "3000:3000"
     environment:
       - PORT=3000
+# adding a second docker image      
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: docuser
+      MONGO_INITDB_ROOT_PASSWORD: 32docuser
