@@ -1,12 +1,28 @@
 const e = require('express');
 const express = require('express')
 const mongoose = require('mongoose');
+const { MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT } = require('./config/config');
 const app = express()
+const mongo_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?
+authsource=admin`
 
-mongoose
-    .connect("mongodb://docuser:32docuser@mongo:197.253.4.26:27017/authsource=admin")
+const connectWithRetry = () => 
+{
+  mongoose
+    .connect(mongo_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModified: false
+    })
     .then(() => console.log("successfully connected!"))
-    .catch((e) => console.log(e)) 
+    .catch((e) => {
+      console.log(e)
+      setTimeout(connectWithRetry, 5000)
+    }); 
+}
+
+connectWithRetry(); 
+
 const port = 500
 
 app.get('/', (req, res) => {
