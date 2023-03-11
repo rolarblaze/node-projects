@@ -12,3 +12,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: docuser
       MONGO_INITDB_ROOT_PASSWORD: 32docuser
+    volumes:
+      - mongodb:/data/db
+
+volumes:
+  mongodb:

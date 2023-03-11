@@ -1,5 +1,12 @@
+const e = require('express');
 const express = require('express')
+const mongoose = require('mongoose');
 const app = express()
+
+mongoose
+    .connect("mongodb://docuser:32docuser@mongo:197.253.4.26:27017/authsource=admin")
+    .then(() => console.log("successfully connected!"))
+    .catch((e) => console.log(e)) 
 const port = 500
 
 app.get('/', (req, res) => {
