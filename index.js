@@ -1,11 +1,24 @@
+const { default: RedisStore } = require('connect-redis');
 const e = require('express');
 const express = require('express');
+const session = require('express-session');
 const mongoose = require('mongoose');
+const redis = require("redis")
+let redisIsStore = require("connect-redit")(session)
+let redisIsClient = redis.createClient({
+  host: REDIS_URL,
+  port: REDIS_PORT,
+});
+
 const { 
   MONGO_USER, 
   MONGO_PASSWORD, 
   MONGO_IP, 
-  MONGO_PORT } = require('./config/config');
+  MONGO_PORT, 
+  REDIS_URL,
+  SESSION_SECRET,
+  REDIS_PORT,
+  } = require('./config/config');
 
   const postRouter = require("./routes/postRoutes");
   const userRouter = require("./routes/userRoute")
@@ -38,6 +51,18 @@ const port = 500
 app.get('/', (req, res) => {
   res.send("<h2> Hello Docker!")
 });
+
+app.use(session({
+  store: new RedisStore({client: redisClient}),
+  secret: SESSION_CLIENT,
+  cookie: {
+    secure: false,
+    resave: false,
+    saveUninitialized: false,
+    httpOnly: true,
+    maxAge: 30000
+  }
+}))
 
 app.use("/api/v1/posts", postRouter);
 app.use("/api/v1/users", userRouter);
