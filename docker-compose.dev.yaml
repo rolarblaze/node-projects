@@ -11,4 +11,7 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - MONGO_USER=docuser
+      - MONGO_PAASOWRD=32docuser
+      - SESSION_SECRET=newpass
     command: ["node", "index.js", "dev"]
