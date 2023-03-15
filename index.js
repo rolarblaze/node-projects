@@ -48,10 +48,11 @@ app.use(express.json());
 
 const port = 500
 
-app.get('/', (req, res) => {
+app.get("/api/v1", (req, res) => {
   res.send("<h2> Hello Docker!")
 });
 
+app.enable("trust proxy");
 app.use(session({
   store: new RedisStore({client: redisClient}),
   secret: SESSION_CLIENT,

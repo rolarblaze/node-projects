@@ -1,9 +1,11 @@
 version: "3.9"
 services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "3000:80"    # by default nginx server is listening on port 80
   node-project:
     build: .
-    ports:
-      - "3000:3000"
     environment:
       - PORT=3000
 #this line of command tell docker what container to start first, 
