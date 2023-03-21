@@ -82,3 +82,14 @@ resource "aws_route_table" "private_route_az2" {
   }
 }
 
+#associate private subnet az1 to private routable az1
+resource "aws_route_table_association" "private_app_subnet_az2" {
+  subnet_id      = var.private_subnet_2_id
+  route_table_id = aws_route_table.private_route_az2.id
+}
+
+#associate private data subnet az2 to private routable az2
+resource "aws_route_table_association" "private_data_subnet_az2" {
+  subnet_id      = var.private_data_subnet_cidr_2_id
+  route_table_id = aws_route_table.private_route_az2.id
+}

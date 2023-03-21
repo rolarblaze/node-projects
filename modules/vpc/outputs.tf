@@ -30,7 +30,7 @@ output "private_data_subnet_cidr_1_id" {
   value = aws_subnet.private_data_subnet_cidr_1.id
 }
 
-output "private_data_subnet_cidr_2" {
+output "private_data_subnet_cidr_2_id" {
   value = aws_subnet.private_data_subnet_cidr_2.id
 }
 
