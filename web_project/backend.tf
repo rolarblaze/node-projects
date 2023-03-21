@@ -2,7 +2,7 @@
 terraform {
   backend "s3" {
     bucket = "my-node-app1973331"
-    key = "value"
+    key = "node-app-ecs.tfstate"
     region = "us-east-1"
     profile = "default"
   }
