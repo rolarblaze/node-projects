@@ -40,3 +40,9 @@ module "security_group" {
   vpc_id = module.vpc.vpc_id
   
 }
+
+# ecs execution role module
+module "" {
+  source = "../modules/ecs-task-exec-rule"
+  project_name = module.vpc.project_name
+}
