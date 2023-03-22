@@ -1,4 +1,4 @@
-# create a vpc 
+# create a vpc
 resource "aws_vpc" "vpc" {
   cidr_block       = var.vpc_cidr
   instance_tenancy = "default"
@@ -21,7 +21,7 @@ resource "aws_internet_gateway" "gw" {
 # I use data sourc to retrieve all the availability zone in our region
 data "aws_availability_zones" "available" {}
 
-# create a public subnet in AZ1 
+# create a public subnet in AZ1
 resource "aws_subnet" "pub_subnet_1" {
   vpc_id     = aws_vpc.vpc.id
   cidr_block = var.pub_subnet_cidr_1
@@ -33,7 +33,7 @@ resource "aws_subnet" "pub_subnet_1" {
   }
 }
 
-# create a public subnet in AZ2 
+# create a public subnet in AZ2
 resource "aws_subnet" "pub_subnet_2" {
   vpc_id     = aws_vpc.vpc.id
   cidr_block = var.pub_subnet_cidr_2
@@ -71,24 +71,26 @@ resource "aws_route_table_association" "pub_route_b" {
   route_table_id = aws_route_table.internet_route.id
 }
 
-# create a public subnet in AZ2 
+# create a private subnet in AZ1
 resource "aws_subnet" "private_subnet_1" {
   vpc_id     = aws_vpc.vpc.id
   cidr_block = var.private_subnet_cidr_1
   availability_zone = data.aws_availability_zones.available.names[0]
   map_public_ip_on_launch = false
 
+
   tags = {
     Name = "Private subnet az1"
   }
 }
 
-# create a public subnet in AZ2 
+# create a public subnet in AZ2
 resource "aws_subnet" "private_subnet_2" {
   vpc_id     = aws_vpc.vpc.id
   cidr_block = var.private_subnet_cidr_2
   availability_zone = data.aws_availability_zones.available.names[1]
   map_public_ip_on_launch = false
+
 
   tags = {
     Name = "Private subnet az2"
@@ -101,6 +103,7 @@ resource "aws_subnet" "private_data_subnet_cidr_1" {
   cidr_block = var.private_data_subnet_cidr_1
   availability_zone = data.aws_availability_zones.available.names[0]
   map_public_ip_on_launch = false
+
 
   tags = {
     "Name" = "private data subnet 1"
