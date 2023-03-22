@@ -32,3 +32,11 @@ module "nat_gateway" {
   private_subnet_2_id           = module.vpc.private_subnet_2_id
   private_data_subnet_cidr_2_id = module.vpc.private_data_subnet_cidr_2_id
 }
+
+# security group module
+module "security_group" {
+  source = "../modules/security-group"
+
+  vpc_id = module.vpc.vpc_id
+  
+}
