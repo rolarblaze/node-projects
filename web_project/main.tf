@@ -42,7 +42,22 @@ module "security_group" {
 }
 
 # ecs execution role module
-module "" {
+module "acm" {
   source = "../modules/ecs-task-exec-rule"
   project_name = module.vpc.project_name
+}
+
+# Applicattion load balancer 
+
+module "application_load_balancer" {
+  source = "../modules/alb"
+
+  project_name = module.vpc.project_name
+  app_load_balancer_id = module.security_group.app_load_balancer_id
+  pub_subnet_1_id = module.vpc.pub_subnet_1_id
+  pub_subnet_2_id = module.vpc.pub_subnet_2_id
+  vpc_id = module.vpc.vpc_id
+  #certificate_arn = module.acm.certificate_arn
+
+  
 }
