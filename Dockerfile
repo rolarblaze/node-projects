@@ -1,15 +1,29 @@
-FROM node:alpine
+# Use a specific version of Node.js as the base image
+FROM node:14-alpine AS builder
+
+# Set the working directory
 WORKDIR /app
-ADD package*.json ./
-COPY . .
-#RUN npm install
 
-ARG NODE_ENV
-RUN if [ "$NODE_ENV" = "development" ]; \
-        then npm install; \
-        else npm install --only=production; \
-        fi
+# Copy the package files and install dependencies
+COPY package.json package-lock.json /app/
+RUN npm install --production
 
-ENV PORT 3000
-EXPOSE $PORT  
-CMD [ "node", "index.js", "dev"]
+# Copy the source code and build the application
+COPY src /app/src
+RUN npm run build-production
+
+# Create a new image with only the necessary files
+FROM node:14-alpine
+WORKDIR /app
+COPY --from=builder /app/app /app
+EXPOSE 3000
+
+# Switch to a non-root user before running the application
+USER node
+
+# Set the NODE_ENV environment variable
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
+# Start the application
+CMD ["npm", "run", "start:production"]
