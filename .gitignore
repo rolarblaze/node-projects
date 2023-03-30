@@ -1,5 +1,7 @@
 node_modules
 file 
 .dockerignore
+web_project/.terraform.lock.hcl
+web_project/.terraform
 
 
