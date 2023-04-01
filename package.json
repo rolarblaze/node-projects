@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "node -L index.js"
+    "dev": "node -L index.js",
+    "build-prod": "./node_modules/.bin/webpack --mode prod"
   },
   "author": "",
   "license": "ISC",
@@ -18,12 +19,12 @@
     "gulp": "^4.0.2",
     "mongoose": "^7.0.1",
     "react": "^18.2.0",
-    "redis": "^4.6.5",
-    "webpack": "^5.75.0"
+    "redis": "^4.6.5"
   },
   "devDependencies": {
     "jest": "^29.5.0",
     "nodemon": "^2.0.21",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "webpack": "^5.77.0"
   }
 }

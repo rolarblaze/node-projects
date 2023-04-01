@@ -10,20 +10,20 @@ RUN npm install --production
 
 # Copy the source code and build the application
 COPY src /app/src
-RUN npm run build-production
+RUN npm install webpack --save-dev
 
 # Create a new image with only the necessary files
-FROM node:14-alpine
-WORKDIR /app
-COPY --from=builder /app/app /app
+#FROM node:14-alpine 
+
+#WORKDIR /app 
+#COPY --from=builder /app/dist .
 EXPOSE 3000
 
-# Switch to a non-root user before running the application
-USER node
+#USER node
+#ARG NODE_ENV=production 
+#ENV NODE_ENV=$NODE_ENV
 
-# Set the NODE_ENV environment variable
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
-# Start the application
+# Start the application 
 CMD ["npm", "run", "start:production"]
+
+
