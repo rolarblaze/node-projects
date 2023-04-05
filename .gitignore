@@ -4,5 +4,11 @@ file
 web_project/.terraform.lock.hcl
 web_project/.terraform
 change.txt
-
+config
+controllers
+middleware 
+models
+routes 
+index.js
+.txt
 
