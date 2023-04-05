@@ -4,7 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const redis = require("redis")
-let redisIsStore = require("connect-redit")(session)
+let redisIsStore = require("connect-redis")(session)
 let redisIsClient = redis.createClient({
   host: REDIS_URL,
   port: REDIS_PORT,
