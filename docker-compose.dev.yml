@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  node-project:
+  node-app:
     build: 
       context: .   #the . is the path to the Dockerfile which is similar to build: . command
       args:
@@ -11,7 +11,7 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
-      - MONGO_USER=docuser
-      - MONGO_PASSOWRD=32docuser
-      - SESSION_SECRET=newpass
+     # - MONGO_USER=docuser
+     # - MONGO_PASSOWRD=32docuser
+      #- SESSION_SECRET=newpass
     command: ["node", "index.js", "dev"]

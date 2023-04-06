@@ -1,5 +1,5 @@
 # Use a specific version of Node.js as the base image
-FROM node:14-alpine AS builder
+FROM node:16.20-alpine AS builder
 
 # Set the working directory
 WORKDIR /app
@@ -24,6 +24,7 @@ EXPOSE 3000
 #ENV NODE_ENV=$NODE_ENV
 
 # Start the application 
-CMD ["npm", "run", "start:production"]
+# CMD ["npm", "run", "start:production"]
+CMD ["npm", "run", "dev"]
 
 

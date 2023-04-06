@@ -5,8 +5,3 @@ Dockerfile
 web_project
 node_modules
 .github
-docker-compose.dev.yaml
-docker-compose.prod.yaml
-docker-compose.yaml
-docker-compose.backup.yaml
-index.js
