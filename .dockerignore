@@ -1,7 +1,15 @@
 node_modules
-Dockerfile
+
 .git 
 .gitignore
 web_project
 node_modules
 .github
+modules
+web_project
+nginx
+build.log 
+.txt*
+docker-compose*
+README.md 
+sonar-project.properties
