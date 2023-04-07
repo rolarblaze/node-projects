@@ -11,14 +11,15 @@ services:
    # depends_on:   
    #   - mongo
 # adding a second docker image      
- # mongo:
-   # image: mongo
-   # environment:
-   #   MONGO_INITDB_ROOT_USERNAME: docuser
-    #  MONGO_INITDB_ROOT_PASSWORD: 32docuser
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
 #name volume to persists our database content 
-    #volumes:
-    #  - mongodb:/data/db
+    volumes:
+      - mongodb:/data/db
   #redis:
    # image: redis 
 
