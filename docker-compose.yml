@@ -8,8 +8,8 @@ services:
       - PORT=3000
 #this line of command tell docker what container to start first, 
 #in our case the node-app depends on the mongo container
-   # depends_on:   
-   #   - mongo
+    depends_on:   
+      - mongo
 # adding a second docker image      
   mongo:
     image: mongo
@@ -23,5 +23,5 @@ services:
   #redis:
    # image: redis 
 
-#volumes:
-#  mongodb:
+volumes:
+  mongodb:
