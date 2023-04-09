@@ -3,13 +3,13 @@ const e = require('express');
 const express = require('express');
 const session = require('express-session');
 const mongoose = require('mongoose');
-/* const redis = require("redis")
+const redis = require("redis")
 let redisIsStore = require("connect-redis")(session)
-/*let redisIsClient = redis.createClient({
+let redisIsClient = redis.createClient({
   host: REDIS_URL,
   port: REDIS_PORT,
 });
-*/
+
 const { 
   MONGO_USER, 
   MONGO_PASSWORD, 
@@ -20,6 +20,11 @@ const {
   REDIS_PORT,
   } = require('./config/config');
 
+  let redisClient = redis.createClient({
+    host: REDIS_URL,
+    port: REDIS_PORT
+  });
+  
   const postRouter = require("./routes/postRoutes");
   const userRouter = require("./routes/userRoute")
 
